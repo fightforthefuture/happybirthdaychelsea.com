@@ -7,7 +7,6 @@ var fs              = require('fs');
 var express         = require('express');
 var cookieParser    = require('cookie-parser');
 var bodyParser      = require('body-parser');
-var util            = require('util');
 var multiparty      = require('multiparty');
 var fs              = require('fs');
 var template        = require('swig');
@@ -15,7 +14,6 @@ var sha1            = require('node-sha1');
 var moment          = require('moment');
 var request         = require('request');
 
-var util            = require('./util');
 var models          = require('./models');
 var sequelize       = models.sequelize;
 var BirthdayCard    = models.BirthdayCard;
