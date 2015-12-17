@@ -231,6 +231,6 @@ if (diceRoll < .33) {
     window.TEST_OPTION = 'c';
 }
 
-window.DONATE_URL = 'https://donate.fightforthefuture.org/campaigns/birthday/page-1/?tag=chelseabirthday&testName='+window.TEST_NAME+'&testOption='+window.TEST_OPTION+'&utm_source=happybirthdaychelsea.com&utm_medium=web&utm_campaign='+window.TEST_NAME+'-'+window.TEST_OPTION;
+window.DONATE_URL = 'https://donate.fightforthefuture.org/campaigns/birthday/page-1/?tag=chelseabirthday-'+window.TEST_OPTION+'&testName='+window.TEST_NAME+'&testOption='+window.TEST_OPTION+'&utm_source=happybirthdaychelsea.com&utm_medium=web&utm_campaign='+window.TEST_NAME+'-'+window.TEST_OPTION;
 
 console.log('diceRoll: ', diceRoll,'; testOption: ', window.TEST_OPTION);
