@@ -82,7 +82,7 @@ var BirthdayController = Composer.Controller.extend({
         
         new ShareModalController({
         	headline: 'Thanks—we\'ll send your card!',
-        	text: 'Please share this page, and consider making a small donation to help cover the cost of printing and postage! :)'
+        	text: 'Please share this page, and consider making a small donation to cover the cost of printing and postage. $4.20 lets us send 5 more cards! Whatever is\'nt send on cards will go to supporting her work from jail.'
         });
         this.el.style.display = 'none';
         document.getElementById('share').style.display = 'inline';
