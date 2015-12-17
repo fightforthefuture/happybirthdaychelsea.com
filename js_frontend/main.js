@@ -1,4 +1,3 @@
-grunt
 var BirthdayController = Composer.Controller.extend({
 	elements: {
 		'ul': 'designs',
