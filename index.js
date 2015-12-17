@@ -11,7 +11,6 @@ var multiparty      = require('multiparty');
 var fs              = require('fs');
 var template        = require('swig');
 var sha1            = require('node-sha1');
-var moment          = require('moment');
 var request         = require('request');
 
 var models          = require('./models');

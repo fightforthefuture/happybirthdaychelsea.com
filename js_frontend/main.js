@@ -80,16 +80,157 @@ var BirthdayController = Composer.Controller.extend({
         xhr.open("post", url, true);
         xhr.send(formData);
         
-        new ShareModalController({
-        	headline: 'Thanks—we\'ll send your card!',
-        	text: 'Please share this page, and consider making a small donation to cover the cost of printing and postage. $4.20 lets us send 5 more cards! Whatever isn\'t spent on cards will go to supporting her work from jail.'
-        });
+        if (window.TEST_OPTION == 'a')
+            new ShareModalController({
+            	headline: 'Thanks—we\'ll send your card!',
+            	text: 'Please share this page, and consider making a small donation to cover the cost of printing and postage. $4.20 lets us send 5 more cards! Whatever isn\'t spent on cards will go to supporting her work from jail.'
+            });
+        else if (window.TEST_OPTION == 'b')
+            new ShareModalController2({});
+        else
+            new ShareModalController3({});
+
         this.el.style.display = 'none';
         document.getElementById('share').style.display = 'inline';
         
         return false;
     },
-})
+});
+
+var ShareModalController2 = BaseShareModalController.extend({
+    
+    headline: 'Thanks—we\'ll send your card!',
+    text: 'Please share this page, and consider making a small donation to cover the cost of printing and postage. $4.20 lets us send 5 more cards! Whatever isn\'t spent on cards will go to supporting her work from jail.',
+
+    init: function() {
+        this.render();
+        this.show();
+    },
+
+    render: function() {
+        var overlay = this.base_render();
+
+        overlay.firstChild.appendChild(ShareModalView2({
+            headline: this.headline,
+            text: this.text
+        }));
+
+        this.html(overlay);
+    }
+});
+
+var ShareModalView2 = function(data) {
+    var
+        modal = $c('div'),
+        close = $c('button'),
+        headline = $c('h2'),
+        copy = $c('p'),
+        shares = $c('div'),
+        tweet = $c('button'),
+        facebook = $c('button'),
+        donate = $c('button');
+
+    modal.classList.add('modal', '_call_modal');
+    close.classList.add('close');
+    shares.classList.add('_call_shares');
+    tweet.classList.add('social', 'twitter', 'small');
+    facebook.classList.add('social', 'facebook', 'small');
+    donate.classList.add('social', 'donate', 'big');
+
+    close.textContent = '⨉';
+    headline.textContent = data.headline;
+    copy.textContent = data.text;
+    tweet.textContent = 'Tweet this';
+    facebook.textContent = 'Share this';
+    donate.textContent = 'Give $7 to send more cards!';
+
+    shares.appendChild(donate);
+
+    shares.appendChild(tweet);
+    shares.appendChild(facebook);
+
+    modal.appendChild(close);
+    modal.appendChild(headline);
+    modal.appendChild(copy);
+    modal.appendChild(shares);
+
+    return modal;
+
+};
+
+var ShareModalController3 = BaseShareModalController.extend({
+    
+    headline: 'Thanks—we\'ll send your card!',
+    text: 'Please share this page, and consider making a small donation to cover the cost of printing and postage. $4.20 lets us send 5 more cards! Whatever isn\'t spent on cards will go to supporting her work from jail.',
+
+    init: function() {
+        this.render();
+        this.show();
+    },
+
+    render: function() {
+        var overlay = this.base_render();
+
+        overlay.firstChild.appendChild(ShareModalView3({
+            headline: this.headline,
+            text: this.text
+        }));
+
+        this.html(overlay);
+    }
+});
+
+var ShareModalView3 = function(data) {
+    var
+        modal = $c('div'),
+        close = $c('button'),
+        headline = $c('h2'),
+        copy = $c('p'),
+        shares = $c('div'),
+        tweet = $c('button'),
+        facebook = $c('button'),
+        donate = $c('button');
+
+    modal.classList.add('modal', '_call_modal');
+    close.classList.add('close');
+    shares.classList.add('_call_shares');
+    tweet.classList.add('social', 'twitter', 'small');
+    facebook.classList.add('social', 'facebook', 'small');
+    donate.classList.add('social', 'donate', 'big');
+
+    close.textContent = '⨉';
+    headline.textContent = data.headline;
+    copy.textContent = data.text;
+    tweet.textContent = 'Tweet this';
+    facebook.textContent = 'Share this';
+    donate.textContent = 'Give $7 to send more cards!';
+
+    shares.appendChild(donate);
+
+    modal.appendChild(close);
+    modal.appendChild(headline);
+    modal.appendChild(copy);
+    modal.appendChild(shares);
+
+    return modal;
+
+};
+
 
 new BirthdayController({el: '#amibeingdetained'});
-window.DONATE_URL = 'https://donate.fightforthefuture.org/campaigns/birthday/page-1/?tag=chelseabirthday';
+
+window.TEST_NAME = 'button-layout-1'
+
+var diceRoll = Math.random();
+
+if (diceRoll < .33) {
+    window.TEST_OPTION = 'a';
+} else if (diceRoll >= .33 && diceRoll < .66) {
+    window.TEST_OPTION = 'b';
+} else {
+    window.TEST_OPTION = 'c';
+}
+
+window.DONATE_URL = 'https://donate.fightforthefuture.org/campaigns/birthday/page-1/?tag=chelseabirthday&testName='+window.TEST_NAME+'&testOption='+window.TEST_OPTION+'&utm_source=happybirthdaychelsea.com&utm_medium=web&utm_campaign='+window.TEST_NAME+'-'+window.TEST_OPTION;
+
+console.log('diceRoll: ', diceRoll,'; testOption: ', window.TEST_OPTION);
