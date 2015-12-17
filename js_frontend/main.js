@@ -51,9 +51,8 @@ var BirthdayController = Composer.Controller.extend({
         
         var required = ['name', 'address', 'city', 'state', 'zip', 'message']
         
-        for (var i = 0; i < required.length; i++)
-        	if (!this[required[i]].value)
-        		add_error(this[required[i]]);
+        if (!this.message.value)
+        	add_error(this.message);
 
         if (error) return alert('Please fill out all required fields :)');
         
