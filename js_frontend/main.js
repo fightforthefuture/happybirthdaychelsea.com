@@ -1,3 +1,4 @@
+grunt
 var BirthdayController = Composer.Controller.extend({
 	elements: {
 		'ul': 'designs',
@@ -92,4 +93,4 @@ var BirthdayController = Composer.Controller.extend({
 })
 
 new BirthdayController({el: '#amibeingdetained'});
-window.DONATE_URL = 'https://donate.fightforthefuture.org/?tag=chelseabirthday';
+window.DONATE_URL = 'https://donate.fightforthefuture.org/campaigns/birthday/page-1/?tag=chelseabirthday';
